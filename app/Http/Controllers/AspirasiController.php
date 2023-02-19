@@ -27,22 +27,24 @@ class AspirasiController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $ValidateData = $this->validate($request, [
             'nik' => 'required',
             'lokasi' => 'required',
-            'ket' => 'required'
+            'kategori_id' => 'required',
+            'ket' => 'required',
+            'image' => 'image|file|max:1024'
         ]);
+
+        if($request->file('image')){
+            $ValidateData['image'] = $request->file('image')->store('post-images');
+        }
     
         $data = Penduduk::all()->where('id',$request->nik)->count();
         if ($data > 0) {
        
-            Input_aspirasi::create([
-                'id' => $request->id,
-                'nik' => $request->nik,
-                'lokasi' => $request->lokasi,
-                'kategori_id' => $request->kategori_id,
-                'ket' => $request->ket,
-            ]);
+            Input_aspirasi::create(
+                $ValidateData
+            );
             Aspirasi::create([
                 'id' => $request->id,
                 'id_aspirasi' => $request->id,

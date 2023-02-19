@@ -19,6 +19,7 @@ class CreateInputAspirasisTable extends Migration
             $table->foreignId('kategori_id');
             $table->string('lokasi');
             $table->string('ket');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
