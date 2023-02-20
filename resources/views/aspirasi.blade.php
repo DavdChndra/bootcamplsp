@@ -163,43 +163,25 @@
                                 <p class="fw-bold p-0 m-0 me-2">Keterangan : </p>
                                 <p class="p-0 m-0">{{ $as->input_aspirasi->ket }}</p>
                             </div>
+                            @if ($as['feedback'] != null)
+                            <div class="d-flex border-bottom mb-2">
+                                <p class="fw-bold p-0 m-0 me-2">Feedback : </p>
+                                <p class="p-0 m-0">{{ $as->feedback }}</p>
+                            </div>
+                            @endif
                         </div>
                     </div>
                     @if ($as['status'] == 'Selesai' and $as['feedback'] == null)
                             <form action="/aspirasi/feedback" method="POST" class=" p-2  rounded-2 text-center">
                                 @csrf
-                                <div class="btn btn-dark">
-                                    <input type="hidden" name="id_aspirasi" value="{{ $as->id  }}">
-                                    <input type="radio" class="" required name="feedback" value="1" id="">
-                                    <label class="form-check-label">
-                                        1
-                                    </label>
+                                <input type="hidden" name="id_aspirasi" value="{{ $as->id  }}">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="radio" class="btn btn-outline-danger" required name="feedback" value="1" >1</button>
+                                    <button type="radio" class="btn btn-outline-danger" name="feedback" required value="2">2</button>
+                                    <button type="radio" class="btn btn-outline-primary" name="feedback" required value="3">3</button>
+                                    <button type="radio" class="btn btn-outline-primary" name="feedback" required value="4">4</button>
+                                    <button type="radio" class="btn btn-outline-success" name="feedback" required value="5">5</button>
                                 </div>
-                                <div class="btn-danger btn">
-                                    <input type="radio" name="feedback" required value="2" id="">
-                                    <label class="form-check-label">
-                                        2
-                                    </label>
-                                </div>
-                                <div class="btn btn-warning">
-                                    <input type="radio" name="feedback" required value="3" id="">
-                                    <label class="form-check-label">
-                                        3
-                                    </label>
-                                </div>
-                                <div class="btn btn-success">
-                                    <input type="radio" name="feedback" required value="4" id="">
-                                    <label class="form-check-label">
-                                        4
-                                    </label>
-                                </div>
-                                <div class="btn btn-primary"> <input type="radio" required name="feedback" value="5"
-                                        id="">
-                                    <label class="form-check-label">
-                                        5
-                                    </label></div>
-                                <button type="submit" class="btn btn-secondary text-light"><i
-                                        class="bi bi-send-fill"></i> </button>
                             </form>
                             @endif
                 </div>

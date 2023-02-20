@@ -59,6 +59,6 @@ class AspirasiController extends Controller
     {
         Aspirasi::where('id_aspirasi',  $request->id_aspirasi)
         ->update(['feedback' => $request->feedback]);
-        return redirect('/aspirasi#aspirasi');
+        return redirect('/#aspirasi');
     }
 }
