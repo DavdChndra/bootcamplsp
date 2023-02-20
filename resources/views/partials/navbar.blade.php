@@ -38,21 +38,20 @@
         <div class="modal-body">
           <form action="/login" method="post">
             @csrf
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Username</label>
-              <input type="text" value="{{ old('username') }}" class="form-control @error('username') is-invalid @enderror" autofocus name="username" id="recipient-name">
+            <div class="form-floating mb-3">
+              <input type="text" value="{{ old('username') }}" class="form-control @error('username') is-invalid @enderror" autofocus name="username"  id="floatingInput" placeholder="username" >
+              <label for="floatingInput">Username</label>
               @error('username')
                   <div class="invalid-feedback">{{ $message }}</div>
               @enderror
             </div>
-            <div class="mb-3">
-              <label for="message-text" class="col-form-label">Password:</label>
-              <input type="password" class="form-control @error('password') is-invalid @enderror" autofocus name="password" id="">
+            <div class="form-floating">
+              <input type="password" class="form-control @error('password') is-invalid @enderror" autofocus name="password" id="floatingPassword" placeholder="Password">
+              <label for="floatingPassword">Password</label>
               @error('password')
               <div class="invalid-feedback">{{ $message }}</div>
-          @enderror
+            @enderror
             </div>
-       
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

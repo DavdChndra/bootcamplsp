@@ -84,7 +84,7 @@
                         <div class="mb-3">
                             <label for="image" class="form-label fw-bold">Upload Gambar</label>
                             <input class="form-control @error('ket') is-invalid @enderror" type="file" id="image" name="image">
-                            @error('ket')
+                            @error('image')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -106,7 +106,7 @@
         </div>
         @if (request('search') == null)
         <div class="col-8 pb-3">
-            <form action="/" class="" method="get">
+            <form action="/#aspirasi" class="" method="get">
                 <label class="form-label fw-bold">Nomor Pengaduan</label>
                 <div class="input-group">
                     <input type="text" required name="search" value="{{ request('search') }}"
@@ -120,7 +120,7 @@
         @endif
         @if (request('search') != null)
         <div class="col-4 pb-3">
-            <form action="/" class="" method="get">
+            <form action="/#aspirasi" class="" method="get">
                 <label class="form-label fw-bold">Nomor Pengaduan</label>
                 <div class="input-group">
                     <input type="text" required name="search" value="{{ request('search') }}"
@@ -141,7 +141,7 @@
                         <div class="nomor bg-danger p-2 rounded text-light"><span class="fw-bold">Nomor Pengaduan : </span>{{ $as->id }}</div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body shadow">
                     <div class="d-flex justify-content-center mb-3">
                         <div class="gambar mx-3 {{ ($as->input_aspirasi->image === null ? 'd-none' : 'd-block' )}}">
                                 <img src="{{ asset('storage/'. $as->input_aspirasi->image) }}" alt="" width="200px" class="rounded">
